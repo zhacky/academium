@@ -1,4 +1,12 @@
 @import url('https://fonts.googleapis.com/css?family=Montserrat:400,800');
+
+.signIn-background {
+  background-image: url('/assets/Images/login-image.jpg'); /* Replace with your image path */
+  background-size: cover; /* Ensure the image covers the entire area */
+  background-position: center; /* Center the image */
+  background-repeat: no-repeat; /* Prevent the image from repeating */
+}
+
 .h11 {
   font-weight: bold;
   margin: 10px;
