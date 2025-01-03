@@ -1,14 +1,56 @@
-<h2>Login</h2>
-<form [formGroup]='form' (ngSubmit)='onSubmit()'>
-  <div>
-    <label for='email'>Email</label>
-    <input name='email' id='email' type='email' formControlName='email'/>
+<!--<h2>Login</h2>-->
+<!--<form [formGroup]='form' (ngSubmit)='onSubmit()'>-->
+<!--  <div>-->
+<!--    <label for='email'>Email</label>-->
+<!--    <input name='email' id='email' type='email' formControlName='email'/>-->
+<!--  </div>-->
+<!--  <br>-->
+<!--  <div>-->
+<!--    <label for='password'>Password</label>&nbsp;-->
+<!--    <input name='password' id='password' type='password' formControlName='password'/>-->
+<!--  </div>-->
+<!--  <br>-->
+<!--  <button type='submit'>Sign In</button>-->
+<!--</form>-->
+
+<div class="app signIn-background">
+  <div class="container" [ngClass]="{'right-panel-active': isSignUp}">
+    <!-- Sign Up Form -->
+    <div class="form-container sign-up-container">
+      <form class="form1" (ngSubmit)="handleSignUp()">
+        <h1 class="h11">CREATE ACCOUNT</h1>
+        <input class="input1" type="text" name="Username" placeholder="Username" [(ngModel)]="state.Username" required />
+        <input class="input1" type="password" name="Password" placeholder="Password" [(ngModel)]="state.Password" required />
+        <input class="input1" type="password" id="ConfirmPassword" name="ConfirmPassword" placeholder="Confirm Password" [(ngModel)]="state.ConfirmPassword" required />
+        <input class="input1" type="email" id="Email" name="Email" placeholder="Email" [(ngModel)]="state.Email" required />
+        <button class="button1" type="submit">SUBMIT</button>
+      </form>
+    </div>
+
+    <!-- Sign In Form -->
+    <div class="form-container sign-in-container">
+      <form class="form1" (ngSubmit)="handleLogin()">
+        <h1 class="h11">LOGIN</h1>
+        <input class="input1" type="text" id="Username" name="Username" placeholder="Username" [(ngModel)]="state.Username" required />
+        <input class="input1" type="password" id="Password" name="Password" placeholder="Password" [(ngModel)]="state.Password" required />
+        <button class="button1" type="submit">LOGIN</button>
+      </form>
+    </div>
+
+    <div class="overlay-container">
+      <div class="overlay">
+        <div class="overlay-panel overlay-left">
+          <h1 class="h11">Welcome Back!</h1>
+          <p class="p1">To keep connected with us, please login with your personal info</p>
+          <button class="button1 ghost" (click)="handleSwitch()">Sign In</button>
+        </div>
+        <div class="overlay-panel overlay-right">
+          <h1 class="h11">Hello, Friend!</h1>
+          <p class="p1">Enter your personal details and start your journey with us</p>
+          <button class="button1 ghost" (click)="handleSwitch()">Sign Up</button>
+        </div>
+      </div>
+    </div>
   </div>
-  <br>
-  <div>
-    <label for='password'>Password</label>&nbsp;
-    <input name='password' id='password' type='password' formControlName='password'/>
-  </div>
-  <br>
-  <button type='submit'>Sign In</button>
-</form>
+</div>
+

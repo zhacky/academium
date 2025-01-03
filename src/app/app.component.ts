@@ -5,12 +5,13 @@ import {NgIf} from '@angular/common';
 import {HttpClient} from '@angular/common/http';
 import {UserInterface} from './core/models/user.interface';
 import {environment} from '../environments/environment';
+import { FormsModule } from '@angular/forms';
 
 
 @Component({
   selector: 'app-root',
   imports: [
-    RouterOutlet, RouterLink, NgIf],
+    RouterOutlet, RouterLink, NgIf, FormsModule],
   templateUrl: './app.component.html',
   standalone: true,
   styleUrl: './app.component.css'
