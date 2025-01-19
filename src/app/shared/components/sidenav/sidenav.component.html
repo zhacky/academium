@@ -1,0 +1,54 @@
+<mat-sidenav-container class="fullscreen-container" autosize>
+  <mat-sidenav #drawer mode="side" opened [style.width]="sidenavWidth()">
+<!--    <div class="sidenav-header">-->
+<!--      <img class="logo-image"  src="assets/Images/login-image.jpg" [style.width]="logoPicSize()" [style.height]="logoPicSize()" />-->
+<!--    </div>-->
+    <mat-nav-list class="nav-list">
+      <div class="sidenav-header">
+        <img class="logo-image"  src="assets/Images/login-image.jpg" [style.width]="logoPicSize()" [style.height]="logoPicSize()" />
+      </div>
+      <!-- Main menu items -->
+      <div class="main-menu">
+        <mat-list-item
+          *ngFor="let item of menuItems().slice(0, menuItems().length - 1)"
+          [routerLink]="item.route"
+          routerLinkActive="selected-menu-item"
+          #rla="routerLinkActive"
+          [activated]="rla.isActive"
+        >
+          <img matListItemIcon [src]="item.icon" alt="Icon" />
+          <span matListItemTitle>{{ item.label }}</span>
+        </mat-list-item>
+      </div>
+
+      <!-- Settings item -->
+      <div class="bottom-item">
+        <mat-list-item
+          [routerLink]="menuItems()[menuItems().length - 1].route"
+          routerLinkActive="selected-menu-item"
+          #rla="routerLinkActive"
+          [activated]="rla.isActive"
+        >
+          <img matListItemIcon [src]="menuItems()[menuItems().length - 1].icon" alt="Settings Icon" />
+          <span matListItemTitle>{{ menuItems()[menuItems().length - 1].label }}</span>
+        </mat-list-item>
+      </div>
+    </mat-nav-list>
+  </mat-sidenav>
+
+  <!-- Main content -->
+  <mat-sidenav-content class="page-content" [style.margin-left]="sidenavWidth()">
+    <mat-toolbar color="primary">
+      <button mat-icon-button (click)="collapsed.set(!collapsed())">
+        <mat-icon>menu</mat-icon>
+      </button>
+      <span class="toolbar-title">Attendance</span>
+      <span class="spacer"></span>
+      <img class="right-icon" src="assets/Icons/icon_notifications.svg"/>
+      <div class="right-icon" style="width: 30px; height: 30px; background-color: #D9D9D9; border-radius: 50%"></div>
+    </mat-toolbar>
+    <div class="content">
+      <router-outlet></router-outlet>
+    </div>
+  </mat-sidenav-content>
+</mat-sidenav-container>
