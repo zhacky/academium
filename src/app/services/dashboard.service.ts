@@ -2,6 +2,8 @@ import {computed, Injectable, signal} from '@angular/core';
 import {Widget} from '../models/dashboard';
 import {StudentComponent} from '../features/dashboard/widgets/student/student.component';
 import {TeacherComponent} from '../features/dashboard/widgets/teacher/teacher.component';
+import {ParentComponent} from '../features/dashboard/widgets/parent/parent.component';
+import {StaffComponent} from '../features/dashboard/widgets/staff/staff.component';
 
 @Injectable()
 export class DashboardService {
@@ -11,32 +13,38 @@ export class DashboardService {
       id: 1,
       label: "Student",
       content: StudentComponent,
+      rows: 1,
+      columns: 1,
+      backgroundColor: '#003f5c',
+      color: 'whitesmoke',
     },
     {
       id: 2,
       label: "Teacher",
-      content: TeacherComponent
+      content: TeacherComponent,
+      rows: 1,
+      columns: 1,
+      backgroundColor: '#003f5c',
+      color: 'whitesmoke',
     },
     {
       id: 3,
       label: "Parents",
-      content: StudentComponent,
+      content: ParentComponent,
+      rows: 1,
+      columns: 1,
+      backgroundColor: '#003f5c',
+      color: 'whitesmoke',
     },
     {
       id: 4,
-      label: "Earning",
-      content: TeacherComponent
+      label: "Staffs",
+      content: StaffComponent,
+      rows: 1,
+      columns: 1,
+      backgroundColor: '#003f5c',
+      color: 'whitesmoke',
     },
-    {
-      id: 5,
-      label: "Parents",
-      content: StudentComponent,
-    },
-    {
-      id: 6,
-      label: "Earning",
-      content: TeacherComponent
-    }
   ])
 
   addedWidgets = signal<Widget[]>([
@@ -44,14 +52,20 @@ export class DashboardService {
       id: 1,
       label: "Student",
       content: StudentComponent,
-      rows: 2,
-      columns: 2
+      rows: 1,
+      columns: 1,
+      backgroundColor: '#003f5c',
+      color: 'whitesmoke',
     },
     {
       id: 2,
       label: "Teacher",
-      content: TeacherComponent
-    }
+      content: TeacherComponent,
+      rows: 1,
+      columns: 1,
+      backgroundColor: '#003f5c',
+      color: 'whitesmoke',
+    },
   ]);
 
   widgetsToAdd = computed(() => {
@@ -94,6 +108,10 @@ export class DashboardService {
     [newWidgets[index], newWidgets[index - 1]] = [{...newWidgets[index - 1]}, { ...newWidgets[index]}];
 
     this.addedWidgets.set(newWidgets)
+  }
+
+  removeWidget (id: number) {
+    this.addedWidgets.set(this.addedWidgets().filter(w => w.id !== id))
   }
 
   constructor() { }
