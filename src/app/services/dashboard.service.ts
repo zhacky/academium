@@ -4,6 +4,7 @@ import {StudentComponent} from '../features/dashboard/widgets/student/student.co
 import {TeacherComponent} from '../features/dashboard/widgets/teacher/teacher.component';
 import {ParentComponent} from '../features/dashboard/widgets/parent/parent.component';
 import {StaffComponent} from '../features/dashboard/widgets/staff/staff.component';
+import {ChartComponent} from '../features/dashboard/widgets/chart/chart.component';
 
 @Injectable()
 export class DashboardService {
@@ -44,6 +45,13 @@ export class DashboardService {
       columns: 1,
       backgroundColor: '#003f5c',
       color: 'whitesmoke',
+    },
+    {
+      id: 5,
+      label: "Charts",
+      content: ChartComponent,
+      rows: 1,
+      columns: 1,
     },
   ])
 
