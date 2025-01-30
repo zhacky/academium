@@ -1,4 +1,4 @@
-import {computed, Injectable, signal} from '@angular/core';
+import {computed, effect, Injectable, signal} from '@angular/core';
 import {Widget} from '../models/dashboard';
 import {StudentComponent} from '../features/dashboard/widgets/student/student.component';
 import {TeacherComponent} from '../features/dashboard/widgets/teacher/teacher.component';
@@ -48,24 +48,7 @@ export class DashboardService {
   ])
 
   addedWidgets = signal<Widget[]>([
-    {
-      id: 1,
-      label: "Student",
-      content: StudentComponent,
-      rows: 1,
-      columns: 1,
-      backgroundColor: '#003f5c',
-      color: 'whitesmoke',
-    },
-    {
-      id: 2,
-      label: "Teacher",
-      content: TeacherComponent,
-      rows: 1,
-      columns: 1,
-      backgroundColor: '#003f5c',
-      color: 'whitesmoke',
-    },
+
   ]);
 
   widgetsToAdd = computed(() => {
@@ -114,5 +97,30 @@ export class DashboardService {
     this.addedWidgets.set(this.addedWidgets().filter(w => w.id !== id))
   }
 
-  constructor() { }
+  fetchWidgets(){
+    const widgetsAsString = localStorage.getItem('dashboardWidgets');
+    if (widgetsAsString) {
+      const widgets = JSON.parse(widgetsAsString) as Widget[];
+      widgets.forEach(widget => {
+        const content = this.widgets().find(w => w.id === widget.id)?.content;
+        if (content){
+          widget.content = content;
+        }
+      })
+
+      this.addedWidgets.set(widgets)
+    }
+  }
+
+  constructor() {
+    this.fetchWidgets()
+  }
+
+  saveWidgets = effect(() => {
+    const widgetsWithoutContent: Partial<Widget>[] = this.addedWidgets().map(w=> ({...w}));
+    widgetsWithoutContent.forEach(w => {
+      delete w.content
+    })
+    localStorage.setItem('dashboardWidgets', JSON.stringify(widgetsWithoutContent))
+  })
 }
