@@ -1,0 +1,7 @@
+.centered-content {
+  display: flex;
+  justify-content: center; /* Centers horizontally */
+  align-items: center; /* Centers vertically */
+  height: 100vh; /* Takes full viewport height */
+  text-align: center; /* Centers the text */
+}
