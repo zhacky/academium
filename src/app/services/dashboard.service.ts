@@ -50,8 +50,8 @@ export class DashboardService {
       id: 5,
       label: "Charts",
       content: ChartComponent,
-      rows: 1,
-      columns: 1,
+      rows: 2,
+      columns: 2,
     },
   ])
 

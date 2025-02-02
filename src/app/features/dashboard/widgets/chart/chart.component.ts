@@ -1,5 +1,5 @@
 import {Component, ElementRef, viewChild} from '@angular/core';
-import {Chart} from 'chart.js';
+import Chart from 'chart.js/auto';
 import {MatButton} from '@angular/material/button';
 
 @Component({
@@ -23,7 +23,7 @@ export class ChartComponent {
           datasets:[
             {
             label: 'Views',
-            data : [100, 102, 1025, 110, 115, 120],
+            data : [100, 102, 105, 110, 115, 120],
             borderColor: 'rgb(255, 99, 132)',
             backgroundColor: 'rgb(255, 99, 132, 0.5)',
             fill : 'start'

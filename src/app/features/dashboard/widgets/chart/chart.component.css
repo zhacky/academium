@@ -1,4 +1,12 @@
-.chart-container{
-  height: calc(100% - 100px);
-  width: 100%;
+.chart-container {
+  height: calc(50vh - 50px); /* Use 100% of the viewport height minus any fixed space */
+  width: calc(100% - 25px);   /* Adjust width to fit within the available space (e.g., subtract 20px for padding or margin) */
+  margin: 0 auto;             /* Center the chart container horizontally if needed */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+button {
+  margin-top: 16px; /* To ensure proper spacing between chart and button */
 }
