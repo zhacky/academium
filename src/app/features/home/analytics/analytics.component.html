@@ -1,0 +1,38 @@
+<h3 class="ml-5 my-16 text-xl">Analytics</h3>
+<div class="flex flex-row gap-x-2 mx-5">
+  <div class="flex-1">
+    <ngx-charts-bar-vertical
+      [view]="viewBar"
+      [scheme]="barColorScheme"
+      [results]="barChartData"
+      [gradient]="false"
+      [xAxis]="barShowXAxis"
+      [yAxis]="barShowYAxis"
+      [legend]="barShowLegend"
+      [showXAxisLabel]="barShowXAxisLabel"
+      [showYAxisLabel]="barShowYAxisLabel"
+      [xAxisLabel]="BarxAxisLabel"
+      [yAxisLabel]="BaryAxisLabel"
+    >
+    </ngx-charts-bar-vertical>
+  </div>
+  <div class="flex-1">
+    <ngx-charts-line-chart
+      [view]="viewLine"
+      [scheme]="LineColorScheme"
+      [results]="lineChartData"
+      [gradient]="gradient"
+      [xAxis]="showXAxis"
+      [yAxis]="showYAxis"
+      [legend]="showLegend"
+      [showXAxisLabel]="showXAxisLabel"
+      [showYAxisLabel]="showYAxisLabel"
+      [xAxisLabel]="xAxisLabel"
+      [yAxisLabel]="yAxisLabel"
+      [autoScale]="true"
+    >
+    </ngx-charts-line-chart>
+  </div>
+</div>
+
+

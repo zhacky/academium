@@ -5,10 +5,10 @@
 <!--    </div>-->
     <mat-nav-list class="nav-list">
       <div class="sidenav-header">
-        <img class="logo-image"  src="assets/Images/login-image.jpg" [style.width]="logoPicSize()" [style.height]="logoPicSize()" />
+        <img class="logo-image"  src="assets/Images/login-image.jpg" [style.width]="logoPicSize()" [style.height]="logoPicSize()"/>
       </div>
       <!-- Main menu items -->
-      <div class="main-menu">
+      <div class="main-menu mt-5">
         <mat-list-item
           *ngFor="let item of menuItems().slice(0, menuItems().length - 1)"
           [routerLink]="item.route"

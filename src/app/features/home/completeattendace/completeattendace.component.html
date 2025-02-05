@@ -1,0 +1,53 @@
+<div>
+  <h3 class="ml-5 mt-16 mb-5 text-xl">Complete Attendace</h3>
+</div>
+<div
+  *ngFor="let semesterData of semesters"
+  class="flex border border-gray-700 rounded-md overflow-x-auto mb-5 m-5"
+  style="scrollbar-width: none; -ms-overflow-style: none;"
+>
+  <!-- Sticky Sidebar -->
+  <div
+    class="min-w-32 flex-none bg-[#DBE6F0] rounded-bl-md rounded-tl-md text-right sticky left-0"
+  >
+    <div class="my-10 mx-5 ">
+      <div class="mb-14">
+        <p>{{ semesterData.semester }}</p>
+        <p>{{ semesterData.academicYear }}</p>
+      </div>
+      <!-- List of Subjects -->
+      <div class="grid-container mt-1" *ngFor="let sub of subjects">
+        <p class="subject-grid text-sm">{{ sub }}</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="py-10 px-5 rounded-lg bg-[white]" *ngFor="let month of displayedMonths">
+    <!-- Month Name -->
+    <div class="mb-2 text-center">
+      <p class="font-bold text-md">{{ month }}</p>
+    </div>
+
+    <!-- Days of the Week -->
+    <div class="grid-container">
+      <p *ngFor="let day of repeatedDays" class="day-cell text-sm">{{ day }}</p>
+    </div>
+
+    <!-- Numbers Row -->
+    <div class="grid-container mt-1">
+      <p *ngFor="let day of daysInAugust" class="date-cell text-sm">{{ day }}</p>
+    </div>
+
+    <!-- Attendance Rows -->
+    <ng-container *ngFor="let sub of subjects">
+      <div class="grid-container mt-1">
+        <p
+          *ngFor="let day of daysInAugust; let i = index"
+          class="attendance-cell text-sm"
+          [ngStyle]="{'background-color': getAttendanceColor(sub, i)}"
+        ></p>
+      </div>
+    </ng-container>
+  </div>
+</div>
+
