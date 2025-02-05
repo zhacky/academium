@@ -1,4 +1,4 @@
-import {ChangeDetectionStrategy, Component} from '@angular/core';
+import {ChangeDetectionStrategy, Component, ViewEncapsulation} from '@angular/core';
 import {MatCardModule} from '@angular/material/card';
 import {MatDatepickerModule} from '@angular/material/datepicker';
 import {MatTableModule} from '@angular/material/table';
@@ -71,7 +71,7 @@ const SubjectData: PresentSubject[] = [
   standalone: true,
   providers: [provideNativeDateAdapter()],
   changeDetection: ChangeDetectionStrategy.OnPush,
-  styleUrl: './historyattendance.component.css'
+  styleUrl: './historyattendance.component.css',
 })
 export class HistoryattendanceComponent {
   displayedColumns: string[] = ['semester', 'subCode', 'section', 'description', 'schedule', 'room', 'teacher', 'summary'];

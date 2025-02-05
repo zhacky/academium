@@ -1,0 +1,5 @@
+mat-form-field.small {
+  --mat-form-field-container-height: 0;
+  --mat-form-field-container-vertical-padding: 5px;
+}
+

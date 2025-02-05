@@ -23,7 +23,34 @@ export class CompleteattendaceComponent {
   ];
   displayedMonths: string[] = [];
 
-  // Define attendance status colors using hex codes
+  semesters = [
+    {
+      semester: 'Spring 2025',
+      academicYear: '2025-2026',
+      subjects: ['CSc988', 'Math124', 'Eng245', 'PE72'],
+      displayedMonths: ['January', 'February', 'March'],
+      repeatedDays: ['M', 'T', 'W', 'T', 'F'],
+      daysInMonth: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10],
+      attendanceData: [
+        // Attendance data for each subject and day in the month
+        // e.g. status per subject for each day
+      ]
+    },
+    {
+      semester: 'Fall 2025',
+      academicYear: '2025-2026',
+      subjects: ['Physics101', 'Chemistry101', 'History101'],
+      displayedMonths: ['August', 'September', 'October'],
+      repeatedDays: ['M', 'T', 'W', 'T', 'F'],
+      daysInMonth: [1, 2, 3, 4, 5],
+      attendanceData: [
+        // Attendance data for each subject and day in the month
+      ]
+    }
+  ];
+
+
+  // Define analytics status colors using hex codes
   attendanceColors: { [key: string]: string } = {
     present: '#6BBE75', // Green
     absent: '#E47E7E',  // Red
@@ -32,7 +59,7 @@ export class CompleteattendaceComponent {
     noClasses: '#8C8C8C' // Gray
   };
 
-  // Dummy attendance data
+  // Dummy analytics data
   dummyAttendance: { [key: string]: string[] } = {
     MAT01: ['present', 'absent', '', 'late', '', 'excused', '', '', 'present', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', ''],
     SCI01: ['', 'present', '', '', 'absent', '', '', 'late', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', ''],
@@ -66,7 +93,7 @@ export class CompleteattendaceComponent {
     return this.academicYear.includes("3 Sem");
   }
 
-  // Function to get attendance color for a specific subject and day
+  // Function to get analytics color for a specific subject and day
   getAttendanceColor(subject: string, dayIndex: number): string {
     const attendanceStatus = this.dummyAttendance[subject][dayIndex];
     return this.attendanceColors[attendanceStatus] || ''; // Return empty string for default (no color)

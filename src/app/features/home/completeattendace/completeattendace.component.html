@@ -1,13 +1,9 @@
-<!--<div class="contributions-grid">-->
-<!--  <div *ngFor="let day of contributions" [style.background-color]="getColor(day.count)">-->
-<!--    &lt;!&ndash; Optionally display the count or date &ndash;&gt;-->
-<!--  </div>-->
-<!--</div>-->
 <div>
-  <h3 class="ml-5 mb-5 text-xl">Complete Attendace</h3>
+  <h3 class="ml-5 mt-16 mb-5 text-xl">Complete Attendace</h3>
 </div>
 <div
-  class="flex border-2 border-gray-700 rounded-md overflow-x-auto mb-5 m-5"
+  *ngFor="let semesterData of semesters"
+  class="flex border border-gray-700 rounded-md overflow-x-auto mb-5 m-5"
   style="scrollbar-width: none; -ms-overflow-style: none;"
 >
   <!-- Sticky Sidebar -->
@@ -16,8 +12,8 @@
   >
     <div class="my-10 mx-5 ">
       <div class="mb-14">
-        <p>{{ semester }}</p>
-        <p>{{ academicYear }}</p>
+        <p>{{ semesterData.semester }}</p>
+        <p>{{ semesterData.academicYear }}</p>
       </div>
       <!-- List of Subjects -->
       <div class="grid-container mt-1" *ngFor="let sub of subjects">
@@ -26,7 +22,7 @@
     </div>
   </div>
 
-  <div class="my-6 p-4 rounded-lg" *ngFor="let month of displayedMonths">
+  <div class="py-10 px-5 rounded-lg bg-[white]" *ngFor="let month of displayedMonths">
     <!-- Month Name -->
     <div class="mb-2 text-center">
       <p class="font-bold text-md">{{ month }}</p>
