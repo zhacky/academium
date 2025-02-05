@@ -1,0 +1,12 @@
+.dashboard-widget {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  grid-auto-rows: minmax(120px, auto); /* Allow rows to grow if content is larger */
+  gap: 16px;
+}
+
+.header{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
